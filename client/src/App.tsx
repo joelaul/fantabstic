@@ -1,3 +1,5 @@
+// https://chatgpt.com/c/67e24c79-35c0-8007-8729-5a834c5e3e41
+
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -16,7 +18,8 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>fantabstic</h1>
+      <h2>a multimodal tab notebook for guitarists and educators</h2>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
