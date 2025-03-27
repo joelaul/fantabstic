@@ -5,7 +5,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-import { apiUrl } from './constants.js';
+import { apiUrl } from './constants'
 
 function App() {
   const [h1, setH1] = useState('fantabstic');
@@ -23,7 +23,7 @@ function App() {
     setEmail(e.target.value);
   }
   const handleKeyDown = (e) => { 
-    if (e.key === 'Enter') handleSubmit(e);
+    if (e.key === 'Enter') handleSubmit()
   }
   const handleSubmit = async () => {
     if (!submitted) setSubmitted((submitted) => !submitted);
