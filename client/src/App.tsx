@@ -12,6 +12,7 @@ import Footer from './components/layout/Footer/Footer';
 
 // Routes
 import Home from './components/routes/Home/Home';
+import Demo from './components/routes/Demo/Demo';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Nav />
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path ="/demo" element={<Demo />}></Route>
         </Routes>
         <Footer />
       </Router>

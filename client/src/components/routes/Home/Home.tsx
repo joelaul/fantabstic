@@ -5,7 +5,6 @@ import reactLogo from '../../../assets/react.svg'
 import viteLogo from '/vite.svg'
 
 const Home = () => {
-  const [h1, setH1] = useState('fantabstic');
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
@@ -16,7 +15,6 @@ const Home = () => {
   }, [])
 
   const handleChange = (e) => {
-    setH1(e.target.value);
     setEmail(e.target.value);
   }
   const handleKeyDown = (e) => { 
@@ -24,7 +22,6 @@ const Home = () => {
   }
   const handleSubmit = async () => {
     if (!submitted) setSubmitted((submitted) => !submitted);
-    setH1('fantabstic');
     setEmail('');
 
     try {
@@ -52,8 +49,9 @@ const Home = () => {
         </a>
       </div>
 
-      <h1>{h1}</h1>
-      <h2 style={{'color': '#00d8ff'}}>a multimodal tab notebook for guitarists and educators</h2>
+      <h1>fantabstic</h1>
+      <h2>a multimodal tab notebook for guitarists and educators</h2>
+      <a href="/demo"><h3>try the demo</h3></a>
 
       <div className="email">
         <h2 className="email__heading">{!submitted ? 'join the mailing list' : 'thank you!'}</h2>
