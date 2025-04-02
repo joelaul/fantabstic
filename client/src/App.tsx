@@ -1,81 +1,44 @@
+// RESOURCES
+
+// Spec (synthesize and commit)
+// https://mail.google.com/mail/u/1/#inbox/FMfcgzQVzXZpsvcvsmVBZBqnswflgcQg
 // https://chatgpt.com/c/67e24c79-35c0-8007-8729-5a834c5e3e41
+// https://web.telegram.org/a/#5198059615
 
-import { useState, useRef, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// Typescript
+// https://www.typescriptlang.org/docs/handbook/intro.html
+// https://typehero.dev/tracks/typescript-foundations
+// https://dev.to/deepeshk1204/best-practices-of-reactjs-with-typescript-24p4
 
-import { apiUrl } from './constants'
+// Shadcn/ui
+// https://www.youtube.com/watch?v=AqmMx_JidGo
+// https://ui.shadcn.com/docs
 
-function App() {
-  const [h1, setH1] = useState('fantabstic');
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-  const input = useRef(null);
+// GLOBAL STYLES 
 
-  useEffect(() => {
-    input.current.focus();
-  }, [])
+import './globals.css';
 
-  const handleChange = (e) => {
-    setH1(e.target.value);
-    setEmail(e.target.value);
-  }
-  const handleKeyDown = (e) => { 
-    if (e.key === 'Enter') handleSubmit()
-  }
-  const handleSubmit = async () => {
-    if (!submitted) setSubmitted((submitted) => !submitted);
-    setH1('fantabstic');
-    setEmail('');
+// COMPONENTS
 
-    try {
-      const res = await fetch(`${apiUrl}/signup`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email }),
-      });
-      if (!res.ok) throw new Error('Failed to fetch')
-    } catch (error) {
-      console.log(error);
-    }
-  }
+// Layout
+import Nav from './components/layout/Nav/Nav';
+import Footer from './components/layout/Footer/Footer';
 
+// Routes
+import Home from './components/routes/Home/Home';
+
+const App = () => {
   return (
     <>
-      <div className="logos">
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-
-      <h1>{h1}</h1>
-      <h2>a multimodal tab notebook for guitarists and educators</h2>
-
-      <div className="email">
-        <h2 className="email__heading">{!submitted ? 'join the mailing list' : 'thank you!'}</h2>
-        <div className="email__main">
-          <input 
-            ref={input}
-            name="email"
-            value={email}
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-            placeholder="Email Address">
-          </input>
-          <button onClick={handleSubmit}>sign up</button>
-        </div>
-      </div>
-
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Router>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+        </Routes>
+        <Footer />
+      </Router>
     </>
   )
 }
