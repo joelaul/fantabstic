@@ -1,19 +1,3 @@
-// RESOURCES
-
-// Spec (synthesize and commit)
-// https://mail.google.com/mail/u/1/#inbox/FMfcgzQVzXZpsvcvsmVBZBqnswflgcQg
-// https://chatgpt.com/c/67e24c79-35c0-8007-8729-5a834c5e3e41
-// https://web.telegram.org/a/#5198059615
-
-// Typescript
-// https://www.typescriptlang.org/docs/handbook/intro.html
-// https://typehero.dev/tracks/typescript-foundations
-// https://dev.to/deepeshk1204/best-practices-of-reactjs-with-typescript-24p4
-
-// Shadcn/ui
-// https://www.youtube.com/watch?v=AqmMx_JidGo
-// https://ui.shadcn.com/docs
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // GLOBAL STYLES 

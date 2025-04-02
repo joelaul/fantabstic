@@ -1,8 +1,6 @@
-// express-session
+/* NOTES - EXPRESS-SESSION
 
 // discussion of session- vs. jwt-based auth, and the passport.authenticate("jwt", {}, () =>{}) flow: https://chatgpt.com/c/67eb8929-1900-8007-86a6-4f40a5b61a32
-
-/*
 
 Express middleware for handling sessions, i.e., parsing Cookie req header, writing Set-Cookie res header, and session data. 
 
@@ -22,5 +20,59 @@ Example MemoryStore.sessions:
 
 Session auth (retrieve user data from session store, indexed by req-provided sessionId cookie) is argued to be more secure, supposedly trumping the efficiency of JWTs' living entirely client-side. 
 
-
 */
+
+const express = require("express");
+const path = require("path");
+const cors = require("cors");
+
+const mongoose = require("mongoose");
+const passport = require("passport");
+require("dotenv").config();
+
+const opts = require("./config/cors");
+const { logger } = require("./middleware/logger");
+
+const app = express();
+
+// DB
+
+mongoose.set("strictQuery", true);
+const connect = async () => {
+  await mongoose.connect(process.env.DATABASE_URI, {
+    useNewUrlParser: true,
+  });
+};
+connect();
+
+// CONFIG / MIDDLEWARE
+
+app.use(passport.initialize());
+require("./config/passport")(passport);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cors(opts));
+app.use(logger);
+
+// ROUTES
+
+app.get("/test", (req, res) => {
+  res.status(200).send({ message: "/ route works" });
+});
+
+app.post("/", (req, res) => {
+  console.log(req.body);
+});
+
+app.use("/users", require("./routes/users"));
+app.use("/licks", require("./routes/licks"));
+
+// INIT
+
+const port = process.env.PORT || 8000;
+mongoose.connection.once("open", () => {
+  console.clear();
+  console.log("Connected to MongoDB");
+  app.listen(port, () => console.log(`Server running on port ${port}`));
+});
