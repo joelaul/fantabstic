@@ -8,10 +8,9 @@
 /* @import "tailwindcss/preflight" layer(base); */
 
 /* FRAMEWORKS - SHADCN/UI
+
 @import "tw-animate-css";
-
 @custom-variant dark (&:is(.dark *));
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -49,7 +48,6 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 }
-
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
@@ -83,7 +81,6 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -178,16 +175,11 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #00d8ff;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-.email__main button {
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
 }
 
 h1 {
@@ -231,6 +223,10 @@ input {
 .email {
   margin: 4em;
 }
+.email__main button {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
 
 .card {
   padding: 2em;
@@ -248,3 +244,5 @@ input {
     transform: rotate(360deg);
   }
 }
+
+/* CLASSES - DEMO */
